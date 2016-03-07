@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Flashcards</title>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="cards/cards.js"></script>
+    <script>
+
+var currentCard;
+
+function newCard(jQuery) {
+  currentCard = cards[Math.floor(Math.random()*cards.length)]
+  $("#card").attr("src", "cards/" + currentCard + ".jpeg");
+}
+
+function answer() {
+  if ($("#response").val() == currentCard) {
+    $("#response").val("");
+    $(newCard);
+  } else {
+    alert("Wrong!");
+  }
+}
+
+$(document).ready(newCard);
+    </script>
+    <style>
+      #card {
+        height: 400px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <center>
+      <img id="card" alt="card" src="#" />
+      <br>
+      <form action="#" onsubmit="answer()"><input id="response" autocomplete="off"></form>
+    </center>
+  </body>
+</html>
